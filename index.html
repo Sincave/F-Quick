@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bino's Pizza - Header Mock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+          <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+<!-- HTML -->
+
+<header class="main-header">
+          <div class="open-badge">
+        <span class="dot"></span>
+        <span class="text">Open</span>
+        <span class="clock">
+<i class="fa fa-clock"></i></span>
+      </div>
+  <div class="logo-wrap">
+    <img src="Logo1.png" alt="Logo" class="logo">
+  </div>
+</header>
+
+<h2 class="contact-title">Contact Us</h2>
+  <!-- مثال لمحتوى تحت باش تشوف الاستجابة -->
+
+            <section class="special-block">
+                 
+    <div class="btns">
+ <!-- زر فتح الخريطة -->
+<a href="#" class="btn" id="openMap"><i class="fa-solid fa-map-location-dot"></i> Location</a>
+
+<!-- المودال -->
+<div id="mapModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <iframe 
+      src="https://maps.google.com/maps?q=34.006874,-4.988693&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+      width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<style>
+/* مودال الخلفية */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.7);
+}
+
+/* محتوى المودال */
+.modal-content {
+  position: relative;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 1300px;
+  background: yellow;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* زر الإغلاق */
+.close {
+  color: black;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+</style>
+
+<script>
+// فتح المودال
+var modal = document.getElementById("mapModal");
+var btn = document.getElementById("openMap");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// إغلاق المودال
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// إغلاق عند الضغط خارج المودال
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+<a href="menu.html" class="btn">
+  <i class="fa-solid fa-book-open"></i>Our menu
+</a>
+    <a href="https://www.instagram.com/snack_f_quick?igsh=NzBlamo5MDE5NjNr" class="btn"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://wa.me/212631142525" class="btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+<a href="https://www.tiktok.com/@fquick.food?_t=ZM-8wcf9VcdOdi&_r=1&fbclid=PAVERDUAMmu1FleHRuA2FlbQIxMAABp8FBPaO_d-LlQFUzcNDBK2DwVL3Si4VtsqeleKRCWyh_Yy35zOrJtT0K4rCt_aem_RZDRxI4YcvQtu1dnLdbEyg" class="btn">
+  <i class="fab fa-tiktok"></i>Tiktok
+</a>
+
+  </div>
+  
+        <section class="special-dishes">
+<h2 class="contact-title">Why F-Quick</h2>
+    <div class="dishes-container">
+      
+      <div class="dish-box">
+        <div class="label">F-QUICK</div>
+        <img src="EE.jpg" alt="plat 1" />
+        <h3>   اللّذة اللي كتدوّخ    </h3>
+        <p> معنا غادي تكتشف طعم مختلف، لذة كتجمع  بين الجودة والسرعة. </p>
+      </div>
+
+      <div class="dish-box">
+        <div class="label">F-QUICK</div>
+        <img src="EE2.jpg" alt="plat 2" />
+        <h3>Try once, come back.</h3>
+      <p>With F-Quick, discover a new taste, a flavor that combines quality and speed.
+</p>
+      </div>
+
+
+    </div>
+  </section>
+  
+    </section>
+    <footer style="background-color:#111; color:white; text-align:center; padding:20px; font-family:Arial, sans-serif;">
+  <p style="margin:0; font-size:16px;font-weight:bold">
+    شكراً لاختياركم مطعمنا، نعدكم دائماً بأطيب الأطعمة
+  </p>
+  <p style="margin:5px 0 0 0; font-size:15px; color:yellow; font-weight:bold">
+    🍴 نتمنى لكم وجبة شهية
+  </p>
+</footer>
+ 
+    
+<script>
+function updateBadge() {
+  const badge = document.querySelector('.open-badge');
+  const dot = badge.querySelector('.dot');
+  const text = badge.querySelector('.text');
+  
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+
+  // الوقت من 9:00 حتى 19:59 → Open
+  if(hour >= 9 && (hour < 00:00 || (hour === 19 && minute < 60))){
+    text.textContent = "Open";
+    dot.style.backgroundColor = "#2db34a"; // أخضر
+    dot.style.boxShadow = "0 0 0 4px rgba(45,179,74,0.12)";
+  } else {
+    text.textContent = "Closed";
+    dot.style.backgroundColor = "#e74c3c"; // أحمر
+    dot.style.boxShadow = "0 0 0 4px rgba(231,76,60,0.12)";
+  }
+}
+
+updateBadge();
+setInterval(updateBadge, 60000); // يتحدث كل دقيقة
+</script>
+
+    
+</body>
+</html>
