@@ -376,11 +376,11 @@ body{
 
 .rating span:hover,
 .rating span:hover ~ span {
-  color: green;
+  color: gold;
 }
 
 .rating .selected {
-  color: green;
+  color: gold;
 }
 
 #message {
