@@ -134,20 +134,31 @@ window.onclick = function(event) {
       <p>With F-Quick, discover a new taste, a flavor that combines quality and speed.
 </p>
       </div>
-
-
     </div>
-  </section>
-  
+          <div class="rating-container">
+        <h2 class="contact-title2">Rate our snack </h2>
+  <div class="rating">
+    <span data-value="5">★</span>
+    <span data-value="4">★</span>
+    <span data-value="3">★</span>
+    <span data-value="2">★</span>
+    <span data-value="1">★</span>
+  </div>
+  <div id="message">شكرا على تقييمك</div>
+          </div>
+        </section>
     </section>
-    <footer style="background-color:#111; color:white; text-align:center; padding:20px; font-family:Arial, sans-serif;">
-  <p style="margin:0; font-size:16px;font-weight:bold">
-    شكراً لاختياركم مطعمنا، نعدكم دائماً بأطيب الأطعمة
-  </p>
-  <p style="margin:5px 0 0 0; font-size:15px; color:yellow; font-weight:bold">
-    🍴 نتمنى لكم وجبة شهية
-  </p>
-</footer>
+
+  <footer class="footer">
+  <!-- Logo / شعار -->
+  <div class="footer-logo">
+    <img src="Top2.png" alt="Pyro Logo">
+  </div>
+
+  <!-- حقوق الطبع -->
+  <p class="footer-copy">&copy; 2025 italian restaurant. All rights reserved by<a href="">Top-team</a></p>
+</footer> 
+  
  
     
 
@@ -186,7 +197,23 @@ function updateBadge() {
 updateBadge();
 setInterval(updateBadge, 60000); // يتحدث كل دقيقة
 </script>
+<script>
+const stars = document.querySelectorAll(".rating span");
+const message = document.getElementById("message");
 
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    stars.forEach(s => s.classList.remove("selected"));
+    star.classList.add("selected");
+
+    message.classList.add("show");
+
+    setTimeout(() => {
+      message.classList.remove("show");
+    }, 2000); // الرسالة تختفي بعد 2 ثواني
+  });
+});
+</script>
     
 </body>
 </html>
