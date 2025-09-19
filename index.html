@@ -247,25 +247,35 @@ stars.forEach(star => {
   <script>
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
+const banner = document.querySelector('.install-box');
 
+// ----------------------
+// 1. Event قبل التثبيت
+// ----------------------
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
+
+  // يبان الزر
   installBtn.style.display = 'inline-block';
 
-  // بعد 5 ثواني يتحيد البانير كامل
+  // ----------------------
+  // 2. البانير يختفي بعد 5 ثواني
+  // ----------------------
   setTimeout(() => {
-    const banner = document.querySelector('.install-box');
-    banner.classList.add('fade-out');
+    banner.classList.add('fade-out');  // تأثير التلاشي
     setTimeout(() => {
-      banner.style.display = 'none';
+      banner.style.display = 'none';   // يخفي البانير نهائياً
     }, 1000); // مدة الانيميشن
   }, 5000);
 });
 
+// ----------------------
+// 3. Event الضغط على زر Installer
+// ----------------------
 installBtn.addEventListener('click', () => {
   if (deferredPrompt) {
-    deferredPrompt.prompt();
+    deferredPrompt.prompt();  // يفتح نافذة التثبيت
     deferredPrompt.userChoice.then((choice) => {
       if (choice.outcome === 'accepted') {
         console.log('App installée ✅');
@@ -279,6 +289,11 @@ installBtn.addEventListener('click', () => {
   </script>
   <style>
 
+body {
+  background: #f4f4f4;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
 /* البانير فوق كلشي */
 .install-box {
@@ -290,7 +305,7 @@ installBtn.addEventListener('click', () => {
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-
+  width:100%;
   position: fixed; /* يبقى فوق كلشي */
   top: 10px;
   left: 50%;
@@ -304,6 +319,28 @@ installBtn.addEventListener('click', () => {
   height: 40px;
   border-radius: 8px;
 }
+
+/* Installer button */
+#installBtn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #0078ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#installBtn:hover {
+  background: #005fcc;
+}
+
+/* fade-out animation */
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+    }
 
 /* Installer button */
 #installBtn {
