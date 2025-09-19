@@ -3,7 +3,7 @@
   "short_name": "Fquick",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "black",
+  "background_color": "#000000",
   "theme_color": "#0078ff",
   "description": "Un site qui peut être installé comme application.",
   "icons": [
@@ -19,5 +19,6 @@
     }
   ]
 }
+
 
 
