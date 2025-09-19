@@ -253,12 +253,13 @@ window.addEventListener('beforeinstallprompt', (e) => {
   deferredPrompt = e;
   installBtn.style.display = 'inline-block';
 
-  // بعد 5 ثواني يتحيد بالأنيميشن
+  // بعد 5 ثواني يتحيد البانير كامل
   setTimeout(() => {
-    installBtn.classList.add('fade-out');
+    const banner = document.querySelector('.install-box');
+    banner.classList.add('fade-out');
     setTimeout(() => {
-      installBtn.style.display = 'none';
-    }, 1000); // وقت الأنيميشن
+      banner.style.display = 'none';
+    }, 1000); // مدة الانيميشن
   }, 5000);
 });
 
@@ -278,24 +279,33 @@ installBtn.addEventListener('click', () => {
   </script>
   <style>
 
+
+/* البانير فوق كلشي */
 .install-box {
   display: flex;
-  justify-content: space-between; /* يبعد العناصر */
+  justify-content: space-between; /* logo يسار، زر يمين */
   align-items: center;
   gap: 15px;
-  width: 300px;
   padding: 15px 20px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  position: fixed; /* يبقى فوق كلشي */
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
 }
 
+/* Logo */
 .logo {
   width: 40px;
   height: 40px;
   border-radius: 8px;
 }
 
+/* Installer button */
 #installBtn {
   padding: 10px 18px;
   border: none;
@@ -315,7 +325,7 @@ installBtn.addEventListener('click', () => {
 .fade-out {
   opacity: 0;
   transition: opacity 1s ease-out;
-      }
+    }
   </style>
 </body>
 </html>
