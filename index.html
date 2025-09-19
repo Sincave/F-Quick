@@ -245,13 +245,18 @@ stars.forEach(star => {
   });
     </script>
   <script>
-    let deferredPrompt;
+let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
   installBtn.style.display = 'inline-block';
+
+  // بعد 5 ثواني يتحيد الزر
+  setTimeout(() => {
+    installBtn.style.display = 'none';
+  }, 5000);
 });
 
 installBtn.addEventListener('click', () => {
