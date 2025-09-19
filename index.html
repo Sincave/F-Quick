@@ -245,44 +245,50 @@ stars.forEach(star => {
   });
     </script>
   <script>
-let deferredPrompt;
+let deferredPrompt = null;
 const installBtn = document.getElementById('installBtn');
 const banner = document.querySelector('.install-box');
+
+// إذا سبق للمستخدم الضغط على Installer، ما نبانوش البانير
+if (localStorage.getItem('pwaInstalled') === 'true') {
+  banner.style.display = 'none';
+} else {
+  banner.style.display = 'flex'; // يبان البانير
+}
 
 // قبل التثبيت
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  installBtn.style.display = 'inline-block'; // يبان الزر
+  installBtn.style.display = 'inline-block';
 });
 
 // عند الضغط على Installer
 installBtn.addEventListener('click', () => {
   if (deferredPrompt) {
-    deferredPrompt.prompt();  // يفتح نافذة التثبيت
+    deferredPrompt.prompt();  // نافذة التثبيت
     deferredPrompt.userChoice.then((choice) => {
-      // إخفاء البانير مباشرة بعد الضغط
+      // نخفي البانير نهائياً
       banner.style.display = 'none';
-      if (choice.outcome === 'accepted') {
-        console.log('App installée ✅');
-      } else {
-        console.log('Installation annulée ❌');
-      }
+      // نخزن أن المستخدم ضغط على Installer
+      localStorage.setItem('pwaInstalled', 'true');
       deferredPrompt = null;
     });
   } else {
-    // حتى إذا deferredPrompt ماكانش، نخفي البانير
     banner.style.display = 'none';
+    localStorage.setItem('pwaInstalled', 'true');
   }
 });
+
+// إذا ما ضغطش المستخدم، يتحيد بعد 8 ثواني
+setTimeout(() => {
+  if (banner.style.display !== 'none') {
+    banner.style.display = 'none';
+  }
+}, 8000);
   </script>
   <style>
 
-body {
-  background: #f4f4f4;
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
 
 /* البانير فوق كلشي */
 .install-box {
