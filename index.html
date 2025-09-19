@@ -245,19 +245,24 @@ stars.forEach(star => {
   });
     </script>
   <script>
-     let deferredPrompt;
+let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
+const banner = document.querySelector('.install-box');
 
+// قبل التثبيت
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  installBtn.style.display = 'inline-block';
+  installBtn.style.display = 'inline-block'; // يبان الزر
 });
 
+// عند الضغط على Installer
 installBtn.addEventListener('click', () => {
   if (deferredPrompt) {
-    deferredPrompt.prompt();
+    deferredPrompt.prompt();  // يفتح نافذة التثبيت
     deferredPrompt.userChoice.then((choice) => {
+      // إخفاء البانير مباشرة بعد الضغط
+      banner.style.display = 'none';
       if (choice.outcome === 'accepted') {
         console.log('App installée ✅');
       } else {
@@ -265,6 +270,9 @@ installBtn.addEventListener('click', () => {
       }
       deferredPrompt = null;
     });
+  } else {
+    // حتى إذا deferredPrompt ماكانش، نخفي البانير
+    banner.style.display = 'none';
   }
 });
   </script>
