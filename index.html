@@ -253,9 +253,12 @@ window.addEventListener('beforeinstallprompt', (e) => {
   deferredPrompt = e;
   installBtn.style.display = 'inline-block';
 
-  // بعد 5 ثواني يتحيد الزر
+  // بعد 5 ثواني يتحيد بالأنيميشن
   setTimeout(() => {
-    installBtn.style.display = 'none';
+    installBtn.classList.add('fade-out');
+    setTimeout(() => {
+      installBtn.style.display = 'none';
+    }, 1000); // وقت الأنيميشن
   }, 5000);
 });
 
@@ -274,12 +277,13 @@ installBtn.addEventListener('click', () => {
 });
   </script>
   <style>
-    
 
 .install-box {
   display: flex;
+  justify-content: space-between; /* يبعد العناصر */
   align-items: center;
   gap: 15px;
+  width: 300px;
   padding: 15px 20px;
   background: white;
   border-radius: 12px;
@@ -305,7 +309,13 @@ installBtn.addEventListener('click', () => {
 
 #installBtn:hover {
   background: #005fcc;
-    }
+}
+
+/* fade-out animation */
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+      }
   </style>
 </body>
 </html>
