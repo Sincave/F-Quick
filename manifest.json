@@ -1,9 +1,9 @@
 {
-  "name": "Mon Application",
-  "short_name": "MonApp",
+  "name": "Fquick Application",
+  "short_name": "Fquick",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "black",
   "theme_color": "#0078ff",
   "description": "Un site qui peut être installé comme application.",
   "icons": [
@@ -19,4 +19,5 @@
     }
   ]
 }
+
 
