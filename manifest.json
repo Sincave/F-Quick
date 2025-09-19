@@ -2,7 +2,7 @@
   "name": "Mon Application",
   "short_name": "MonApp",
   "start_url": "index.html",
-  "display": "browser",
+  "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0078ff",
   "description": "Un site qui peut être installé comme application.",
@@ -19,5 +19,4 @@
     }
   ]
 }
-
 
